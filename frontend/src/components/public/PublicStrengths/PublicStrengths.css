@@ -1,0 +1,306 @@
+/* ========================================
+   PUBLIC STRENGTHS
+======================================== */
+
+.public-strengths {
+  padding: 110px 7%;
+  background: #ffffff;
+  color: #17212b;
+}
+
+.strengths-container {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.strengths-header {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: end;
+  gap: 70px;
+  margin-bottom: 65px;
+}
+
+.strengths-eyebrow {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #d58b28;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.strengths-heading h2 {
+  margin: 0;
+  color: #17212b;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+}
+
+.strengths-heading h2 span {
+  color: #d58b28;
+}
+
+.strengths-intro {
+  padding-bottom: 5px;
+}
+
+.strengths-intro p {
+  margin: 0;
+  color: #68727c;
+  font-size: 15px;
+  line-height: 1.95;
+}
+
+/* ========================================
+   STRENGTHS GRID
+======================================== */
+
+.strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid #e8ebee;
+  border-left: 1px solid #e8ebee;
+}
+
+.strength-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 275px;
+  padding: 35px 30px;
+  overflow: hidden;
+  background: #ffffff;
+  border-right: 1px solid #e8ebee;
+  border-bottom: 1px solid #e8ebee;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.strength-card:hover {
+  z-index: 1;
+  background: #fafbfc;
+  box-shadow: 0 12px 35px rgba(23, 33, 43, 0.07);
+}
+
+.strength-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 27px;
+}
+
+.strength-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  color: #d58b28;
+  background: #fff6e9;
+  border: 1px solid #f5e5cc;
+  border-radius: 6px;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.strength-card:hover .strength-icon {
+  color: #ffffff;
+  background: #d58b28;
+}
+
+.strength-number {
+  color: #d9dee3;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.strength-card h3 {
+  margin: 0 0 14px;
+  color: #17212b;
+  font-size: 19px;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.strength-card p {
+  flex-grow: 1;
+  margin: 0;
+  color: #68727c;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.strength-card-line {
+  width: 38px;
+  height: 3px;
+  margin-top: 25px;
+  background: #d58b28;
+  transition: width 0.3s ease;
+}
+
+.strength-card:hover .strength-card-line {
+  width: 70px;
+}
+
+/* ========================================
+   BOTTOM STATEMENT
+======================================== */
+
+.strengths-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  margin-top: 65px;
+  padding: 45px 50px;
+  background: #172b3a;
+  border-left: 5px solid #d58b28;
+}
+
+.strengths-bottom-label {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: #e4a344;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+}
+
+.strengths-bottom-content h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(25px, 3vw, 35px);
+  font-weight: 750;
+  line-height: 1.4;
+  letter-spacing: -0.5px;
+}
+
+.strengths-bottom-description {
+  padding-left: 30px;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.strengths-bottom-description p {
+  margin: 0;
+  color: #c4cdd4;
+  font-size: 14px;
+  line-height: 2;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1000px) {
+  .public-strengths {
+    padding: 85px 5%;
+  }
+
+  .strengths-header {
+    gap: 35px;
+  }
+
+  .strengths-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .strength-card {
+    min-height: 260px;
+  }
+
+  .strengths-bottom {
+    gap: 35px;
+    padding: 35px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .public-strengths {
+    padding: 70px 20px;
+  }
+
+  .strengths-header {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-bottom: 40px;
+  }
+
+  .strengths-heading h2 {
+    font-size: 34px;
+    letter-spacing: -0.8px;
+  }
+
+  .strengths-intro p {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .strengths-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .strength-card {
+    min-height: auto;
+    padding: 28px 24px;
+  }
+
+  .strength-card-top {
+    margin-bottom: 22px;
+  }
+
+  .strength-card h3 {
+    font-size: 18px;
+  }
+
+  .strength-card p {
+    font-size: 13px;
+  }
+
+  .strengths-bottom {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-top: 40px;
+    padding: 30px 24px;
+  }
+
+  .strengths-bottom-content h3 {
+    font-size: 27px;
+  }
+
+  .strengths-bottom-description {
+    padding-top: 20px;
+    padding-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: none;
+  }
+
+  .strengths-bottom-description p {
+    font-size: 13px;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .strength-card,
+  .strength-icon,
+  .strength-card-line {
+    transition: none;
+  }
+}

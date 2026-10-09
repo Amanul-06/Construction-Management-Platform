@@ -1,0 +1,263 @@
+/* ==============================
+   ABOUT SECTION
+================================ */
+
+.public-about {
+  padding: 110px 24px;
+  background: #ffffff;
+  color: #17212b;
+}
+
+.about-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+  gap: 80px;
+}
+
+/* Image */
+
+.about-image-wrapper {
+  position: relative;
+  min-width: 0;
+  padding: 0 18px 18px 0;
+}
+
+.about-image-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  width: 120px;
+  height: 120px;
+  border-top: 4px solid #f5b335;
+  border-left: 4px solid #f5b335;
+  z-index: 0;
+}
+
+.about-image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 510px;
+  object-fit: cover;
+  object-position: center;
+  background: #e2e8f0;
+}
+
+.about-image-overlay {
+  position: absolute;
+  z-index: 2;
+  inset: 0 18px 18px 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 28px;
+  background: linear-gradient(
+    0deg,
+    rgba(12, 25, 39, 0.7),
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+.about-image-label {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.about-image-accent {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 65%;
+  height: 65%;
+  background: #f5b335;
+}
+
+/* Content */
+
+.about-content {
+  min-width: 0;
+}
+
+.about-eyebrow {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #b57a00;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+}
+
+.about-content h2 {
+  margin: 0 0 25px;
+  color: #17212b;
+  font-size: clamp(32px, 3.3vw, 46px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.about-content h2 span {
+  color: #b57a00;
+}
+
+.about-description {
+  margin: 0 0 18px;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* Highlights */
+
+.about-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.about-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.about-highlight-number {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #f5b335;
+  color: #8a5b00;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.about-highlight h3 {
+  margin: 0 0 6px;
+  color: #17212b;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.about-highlight p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Button */
+
+.about-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 32px;
+  padding: 15px 22px;
+  background: #17212b;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.about-button span {
+  color: #f5b335;
+  font-size: 20px;
+  transition: transform 0.25s ease;
+}
+
+.about-button:hover {
+  background: #f5b335;
+  color: #17212b;
+}
+
+.about-button:hover span {
+  color: #17212b;
+  transform: translateX(4px);
+}
+
+/* ==============================
+   TABLET
+================================ */
+
+@media (max-width: 1000px) {
+  .public-about {
+    padding: 85px 28px;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .about-image {
+    height: 460px;
+  }
+
+  .about-content h2 {
+    font-size: 34px;
+  }
+}
+
+/* ==============================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+  .public-about {
+    padding: 70px 22px;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .about-image-wrapper {
+    max-width: 520px;
+  }
+
+  .about-image {
+    height: 380px;
+  }
+
+  .about-content h2 {
+    font-size: 34px;
+  }
+
+  .about-description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .about-image {
+    height: 300px;
+  }
+
+  .about-content h2 {
+    font-size: 30px;
+  }
+
+  .about-highlight {
+    gap: 12px;
+  }
+}

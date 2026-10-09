@@ -1,0 +1,390 @@
+/* =========================================
+   PUBLIC NAVBAR
+========================================= */
+
+.public-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e9ecef;
+  transition:
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.public-navbar.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 5px 25px rgba(23, 33, 43, 0.08);
+}
+
+.public-navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 84px;
+  margin: 0 auto;
+  padding: 0 7%;
+}
+
+/* =========================================
+   BRAND
+========================================= */
+
+.navbar-brand {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+  color: #17212b;
+  text-decoration: none;
+}
+
+.navbar-brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 47px;
+  height: 47px;
+  background: #172b3a;
+  border-radius: 4px;
+  color: #e4a344;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.navbar-brand:hover .navbar-brand-icon {
+  background: #d58b28;
+  color: #ffffff;
+}
+
+.navbar-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navbar-brand-name {
+  color: #17212b;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.8px;
+}
+
+.navbar-brand-name span {
+  color: #d58b28;
+}
+
+.navbar-brand-tagline {
+  color: #78828b;
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 2px;
+}
+
+/* =========================================
+   DESKTOP NAVIGATION
+========================================= */
+
+.navbar-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 27px;
+}
+
+.navbar-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 84px;
+  color: #4d5862;
+  font-size: 12px;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.navbar-link::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: #d58b28;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.navbar-link:hover,
+.navbar-link-active {
+  color: #17212b;
+}
+
+.navbar-link:hover::after,
+.navbar-link-active::after {
+  transform: scaleX(1);
+}
+
+/* =========================================
+   DESKTOP CTA
+========================================= */
+
+.navbar-cta {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 45px;
+  padding: 0 18px;
+  background: #d58b28;
+  border: 1px solid #d58b28;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 750;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.navbar-cta:hover {
+  background: #bd7620;
+  border-color: #bd7620;
+}
+
+/* =========================================
+   MOBILE MENU BUTTON
+========================================= */
+
+.navbar-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  background: #f5f6f7;
+  border: 1px solid #e7eaed;
+  border-radius: 4px;
+  color: #17212b;
+  cursor: pointer;
+}
+
+/* =========================================
+   MOBILE OVERLAY
+========================================= */
+
+.navbar-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  background: rgba(14, 24, 33, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.navbar-mobile-overlay-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =========================================
+   MOBILE DRAWER
+========================================= */
+
+.navbar-mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  width: min(390px, 88vw);
+  height: 100vh;
+  height: 100dvh;
+  padding: 30px 25px;
+  overflow-y: auto;
+  background: #ffffff;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.1);
+  visibility: hidden;
+  transform: translateX(100%);
+  transition:
+    transform 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.navbar-mobile-open {
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.navbar-mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e8ebee;
+  color: #d58b28;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.navbar-mobile-header svg {
+  transform: rotate(-90deg);
+}
+
+/* Mobile Links */
+
+.navbar-mobile-links {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.navbar-mobile-link {
+  display: grid;
+  grid-template-columns: 30px 1fr 20px;
+  align-items: center;
+  gap: 10px;
+  min-height: 62px;
+  border-bottom: 1px solid #edf0f2;
+  color: #263440;
+  font-size: 15px;
+  font-weight: 650;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    padding 0.2s ease;
+}
+
+.navbar-mobile-number {
+  color: #a0a8af;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.navbar-mobile-link > svg {
+  color: #a0a8af;
+}
+
+.navbar-mobile-link:hover,
+.navbar-mobile-link-active {
+  padding-left: 5px;
+  color: #d58b28;
+}
+
+.navbar-mobile-link-active .navbar-mobile-number {
+  color: #d58b28;
+}
+
+.navbar-mobile-link:hover > svg,
+.navbar-mobile-link-active > svg {
+  color: #d58b28;
+}
+
+/* Mobile CTA */
+
+.navbar-mobile-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  min-height: 53px;
+  margin-top: 30px;
+  padding: 0 18px;
+  background: #172b3a;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 750;
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+
+.navbar-mobile-cta:hover {
+  background: #d58b28;
+}
+
+.navbar-mobile-footer {
+  margin-top: auto;
+  padding-top: 35px;
+  color: #929ba3;
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 1.5px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   TABLET AND MOBILE
+========================================= */
+
+@media (max-width: 1150px) {
+  .public-navbar-container {
+    padding: 0 5%;
+    gap: 20px;
+  }
+
+  .navbar-navigation {
+    gap: 17px;
+  }
+
+  .navbar-link {
+    font-size: 11px;
+  }
+
+  .navbar-brand-name {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 950px) {
+  .public-navbar-container {
+    min-height: 74px;
+    padding: 0 22px;
+  }
+
+  .navbar-navigation,
+  .navbar-cta {
+    display: none;
+  }
+
+  .navbar-menu-toggle {
+    display: inline-flex;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .public-navbar,
+  .navbar-brand-icon,
+  .navbar-link,
+  .navbar-link::after,
+  .navbar-cta,
+  .navbar-mobile-overlay,
+  .navbar-mobile,
+  .navbar-mobile-link,
+  .navbar-mobile-cta {
+    transition: none;
+  }
+}
