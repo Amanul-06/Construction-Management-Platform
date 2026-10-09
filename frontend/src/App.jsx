@@ -7,6 +7,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard/AdminDashboard";
 import ProtectedRoute from "./components/admin/ProtectedRoute/ProtectedRoute";
 import Projects from "./pages/admin/Projects/Projects";
 import Progress from "./pages/admin/Progress/Progress";
+import Enquiries from "./pages/admin/Enquiries/Enquiries";
 
 function AdminPlaceholder({ title }) {
   return (
@@ -39,10 +40,7 @@ function App() {
 
             <Route path="users" element={<AdminPlaceholder title="Users" />} />
 
-            <Route
-              path="enquiries"
-              element={<AdminPlaceholder title="Enquiries" />}
-            />
+            <Route path="enquiries" element={<Enquiries />} />
 
             <Route
               path="settings"

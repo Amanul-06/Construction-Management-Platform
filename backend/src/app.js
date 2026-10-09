@@ -5,6 +5,7 @@ const authRoutes = require("./routes/authRoutes");
 const projectRoutes = require("./routes/projectRoutes");
 const progressRoutes = require("./routes/progressRoutes");
 const adminDashboardRoutes = require("./routes/adminDashboardRoutes");
+const enquiryRoutes = require("./routes/enquiryRoutes");
 
 const app = express();
 
@@ -47,6 +48,9 @@ app.use("/api/projects", projectRoutes);
 
 // Admin dashboard routes.
 app.use("/api/admin/dashboard", adminDashboardRoutes);
+
+// Public enquiry submission and protected enquiry management.
+app.use("/api/enquiries", enquiryRoutes);
 
 // Progress updates routes.
 app.use("/api/progress", progressRoutes);

@@ -23,6 +23,9 @@ const initialFormData = {
 function PublicContact() {
   const [formData, setFormData] = useState(initialFormData);
   const [status, setStatus] = useState("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,13 +43,57 @@ function PublicContact() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (status === "submitting") return;
+
     setStatus("submitting");
+    setErrorMessage("");
 
-    // The backend integration will be connected separately.
-    // Prevent the form from claiming an enquiry was delivered
-    // when no backend endpoint has been configured.
+    if (!API_URL) {
+      setErrorMessage(
+        "The enquiry service is not configured. Please contact us directly."
+      );
+      setStatus("error");
+      return;
+    }
 
-    setStatus("error");
+    try {
+      const response = await fetch(
+        `${API_URL.replace(/\/+$/, "")}/api/enquiries`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            phone: formData.phone.trim(),
+            company: formData.company.trim(),
+            subject: formData.subject,
+            message: formData.message.trim(),
+          }),
+        },
+      );
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message || "Unable to submit your enquiry. Please try again."
+        );
+      }
+
+      setFormData({ ...initialFormData });
+      setStatus("success");
+    } catch (error) {
+      console.error("Enquiry submission error:", error);
+
+      setErrorMessage(
+        error.message ||
+          "Unable to submit your enquiry. Please check your connection and try again."
+      );
+      setStatus("error");
+    }
   };
 
   const contactDetails = [
@@ -285,8 +332,7 @@ function PublicContact() {
 
               {status === "error" && (
                 <div className="contact-form-error" role="alert">
-                  The enquiry form is not connected to the server yet. Please
-                  configure the backend integration before accepting enquiries.
+                  {errorMessage}
                 </div>
               )}
 

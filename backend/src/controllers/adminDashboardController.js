@@ -15,7 +15,7 @@ const getDashboardStats = async (req, res) => {
             Project.countDocuments({ status: "In Progress" }),
             Project.countDocuments({ status: "Completed" }),
             Enquiry.countDocuments(),
-            Enquiry.countDocuments({ status: "New" }),
+            Enquiry.countDocuments({ status: "pending" }),
         ]);
 
         return res.status(200).json({

@@ -24,6 +24,13 @@ const enquirySchema = new mongoose.Schema(
             default: "",
         },
 
+        company: {
+            type: String,
+            trim: true,
+            maxlength: 150,
+            default: "",
+        },
+
         subject: {
             type: String,
             required: [true, "Subject is required"],
