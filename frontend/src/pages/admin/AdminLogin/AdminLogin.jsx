@@ -32,12 +32,42 @@ function AdminLogin() {
     setLoading(true);
 
     try {
-      // Backend authentication will be connected here.
-      // For now, this form does not authenticate users.
+      const apiUrl = import.meta.env.VITE_API_URL;
 
-      setError("Admin authentication has not been connected yet.");
-    } catch (err) {
-      setError("Something went wrong. Please try again.");
+      if (!apiUrl) {
+        throw new Error("The API URL is not configured.");
+      }
+
+      const response = await fetch(`${apiUrl}/api/auth/admin/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email.trim(),
+          password: formData.password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Unable to log in. Please try again.");
+      }
+
+      if (!data.token || data.user?.role !== "admin") {
+        throw new Error("Invalid administrator response.");
+      }
+
+      // MVP token storage.
+      // We can move to secure HttpOnly cookies before production use.
+      localStorage.setItem("builder360_token", data.token);
+
+      localStorage.setItem("builder360_user", JSON.stringify(data.user));
+
+      navigate("/admin/dashboard");
+    } catch (error) {
+      setError(error.message || "Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }

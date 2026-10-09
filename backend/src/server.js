@@ -10,15 +10,10 @@ const startServer = async () => {
         await connectDB();
 
         app.listen(PORT, () => {
-            console.log(
-                `Construction Management Platform API running on port ${PORT}`
-            );
-
-            console.log(`Local API: http://localhost:${PORT}`);
-            console.log(`Health check: http://localhost:${PORT}/api/health`);
+            console.log(`Builder360 API running on port ${PORT}`);
         });
     } catch (error) {
-        console.error("Failed to start server:", error.message);
+        console.error("Failed to start Builder360:", error.message);
         process.exit(1);
     }
 };
