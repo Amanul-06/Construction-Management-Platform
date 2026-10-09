@@ -2,14 +2,19 @@ const express = require("express");
 const cors = require("cors");
 
 const authRoutes = require("./routes/authRoutes");
+const projectRoutes = require("./routes/projectRoutes");
+const progressRoutes = require("./routes/progressRoutes");
+const adminDashboardRoutes = require("./routes/adminDashboardRoutes");
 
 const app = express();
 
+// Allowed frontend origins.
 const allowedOrigins = [
     "http://localhost:5173",
     process.env.FRONTEND_URL,
 ].filter(Boolean);
 
+// CORS configuration.
 app.use(
     cors({
         origin: (origin, callback) => {
@@ -23,6 +28,7 @@ app.use(
     })
 );
 
+// Parse JSON request bodies.
 app.use(express.json({ limit: "10kb" }));
 
 // API health check.
@@ -35,6 +41,15 @@ app.get("/api/health", (req, res) => {
 
 // Authentication routes.
 app.use("/api/auth", authRoutes);
+
+// Projects management routes.
+app.use("/api/projects", projectRoutes);
+
+// Admin dashboard routes.
+app.use("/api/admin/dashboard", adminDashboardRoutes);
+
+// Progress updates routes.
+app.use("/api/progress", progressRoutes);
 
 // Unknown endpoint handler.
 app.use((req, res) => {

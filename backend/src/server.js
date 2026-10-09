@@ -2,12 +2,16 @@ require("dotenv").config();
 
 const app = require("./app");
 const connectDB = require("./config/db");
+const { initializeGridFS } = require("./config/gridfs");
 
 const PORT = process.env.PORT || 5005;
 
 const startServer = async () => {
     try {
         await connectDB();
+
+        // Initialize image storage after MongoDB connects.
+        initializeGridFS();
 
         app.listen(PORT, () => {
             console.log(`Builder360 API running on port ${PORT}`);
